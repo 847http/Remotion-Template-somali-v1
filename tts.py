@@ -221,13 +221,9 @@ async def process_video(video_key):
     output_dir = os.path.join(PROJECT_PATH, "out")
     os.makedirs(output_dir, exist_ok=True)
 
-    i = 1
-    while True:
-        output_filename = f"video{i}.mp4"
-        output_path = os.path.join(output_dir, output_filename)
-        if not os.path.exists(output_path):
-            break
-        i += 1
+    output_filename = f"{video_key}.mp4"
+    output_path = os.path.join(output_dir, output_filename)
+
 
     print(f"🎥 Rendering Remotion video to {output_filename}...")
 
@@ -236,6 +232,7 @@ async def process_video(video_key):
         cwd=PROJECT_PATH,
         shell=True
     )
+
 
 
     print(f"✅ Completed: {video_key}")
